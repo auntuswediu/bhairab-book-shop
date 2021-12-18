@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 25, 2020 at 09:13 AM
--- Server version: 10.1.36-MariaDB
--- PHP Version: 7.2.10
+-- Generation Time: Dec 18, 2021 at 01:19 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 8.1.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -36,7 +35,7 @@ CREATE TABLE `billing_details` (
   `address` text NOT NULL,
   `city` text NOT NULL,
   `post_code` varchar(40) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `email` varchar(30) NOT NULL,
   `company_name` varchar(35) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -59,7 +58,7 @@ INSERT INTO `billing_details` (`id`, `user_id`, `name`, `phone`, `address`, `cit
 CREATE TABLE `book_condition` (
   `id` int(11) NOT NULL,
   `condition` varchar(252) CHARACTER SET utf8 NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -81,11 +80,11 @@ INSERT INTO `book_condition` (`id`, `condition`, `created_at`) VALUES
 CREATE TABLE `categories` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `sl_no` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `parent_id` int(11) DEFAULT '0',
+  `parent_id` int(11) DEFAULT 0,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `url` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `status` tinyint(4) NOT NULL DEFAULT '1',
+  `status` tinyint(4) NOT NULL DEFAULT 1,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -98,7 +97,7 @@ INSERT INTO `categories` (`id`, `sl_no`, `parent_id`, `name`, `description`, `ur
 (2, '517-00010', 0, 'ddnovel2', 'ddnovel2', 'ddnovel2', 1, NULL),
 (3, '518-00010', 0, 'anything23', 'anything23', 'anything23', 1, NULL),
 (4, '519-00010', 0, 'ddddd', 'ddddd', 'ddddd', 1, NULL),
-(5, '7520-00010', 0, 'dddelctro', 'dddelctro', 'dddelctro', 1, NULL),
+(5, '520-00010', 0, 'dddelctro', 'dddelctro', 'dddelctro', 1, NULL),
 (6, '521-00010', 0, 'reprise', 'reprise', 'reprise', 1, NULL),
 (7, '522-00010', 0, 'hello', 'hello', 'hello', 1, NULL),
 (8, '523-00010', 0, 'no way', 'no way', 'no way', 1, NULL),
@@ -113,7 +112,8 @@ INSERT INTO `categories` (`id`, `sl_no`, `parent_id`, `name`, `description`, `ur
 (17, '524-000105', 0, 'nope', 'nope', 'nope', 1, NULL),
 (18, '525-000106', 0, 'keep23', 'keep23', 'keep23', 1, NULL),
 (19, '526-000107', 0, 'tree', 'tree', 'tree', 1, NULL),
-(20, '527-000108', 0, 'lol23', 'lol23', 'lol23', 1, NULL);
+(20, '527-000108', 0, 'lol23', 'lol23', 'lol23', 1, NULL),
+(21, '516-000100', 0, 'novel', 'novel', 'novel', 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -150,7 +150,7 @@ CREATE TABLE `delivery_info` (
   `address` text NOT NULL,
   `city` text NOT NULL,
   `post_code` varchar(40) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `note` text NOT NULL,
   `email` varchar(30) NOT NULL,
   `company_name` varchar(35) NOT NULL
@@ -161,10 +161,9 @@ CREATE TABLE `delivery_info` (
 --
 
 INSERT INTO `delivery_info` (`id`, `invoice_id`, `name`, `phone`, `address`, `city`, `post_code`, `created_at`, `note`, `email`, `company_name`) VALUES
-(1, 1, 'Abira;Rahman', '01731452123', 'House # 51/A/1 1st Floor Flat # A-1 West RazaBazar', 'Dhaka', '1205', '2019-12-11 12:51:50', '', 'farfia@gmail.com', 'SC IT'),
-(2, 2, 'Raisa;Rahman', '1205', '51/A', 'Dhaka', '1205', '2019-12-11 12:52:53', 'lk', 'ashik@gmail.com', 'SC IT'),
-(3, 3, 'Ashik;Rahman', '01731002123', 'House # 51/A/1 1st Floor Flat # A-1 West RazaBazar Road, Panthapath', 'Dhaka', '1205', '2019-12-28 21:42:02', '', 'ashikurashik.sc@gmail.com', 'SoftCare IT'),
-(4, 4, 'Ashik;Rahman', '01731002123', 'House # 51/A/1 1st Floor Flat # A-1 West RazaBazar Road, Panthapath', 'Dhaka', '1205', '2019-12-28 21:46:18', 'hfghf', 'ashikurashik.sc@gmail.com', 'SoftCare IT');
+(4, 4, 'Ashik;Rahman', '01731002123', 'House # 51/A/1 1st Floor Flat # A-1 West RazaBazar Road, Panthapath', 'Dhaka', '1205', '2019-12-28 21:46:18', 'hfghf', 'ashikurashik.sc@gmail.com', 'SoftCare IT'),
+(5, 5, 'Ashikur;Rahman', '1205', '51/A', 'Dhaka', '1205', '2021-12-18 11:56:40', '', 'ashik@gmail.com', 'SC IT'),
+(6, 6, 'Ashikur;Rahman', '1205', '51/A', 'Dhaka', '1205', '2021-12-18 12:18:41', '', 'ashik@gmail.com', 'SC IT');
 
 -- --------------------------------------------------------
 
@@ -175,8 +174,8 @@ INSERT INTO `delivery_info` (`id`, `invoice_id`, `name`, `phone`, `address`, `ci
 CREATE TABLE `invoice` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `delivery_status` int(11) NOT NULL DEFAULT '0'
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `delivery_status` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -184,10 +183,9 @@ CREATE TABLE `invoice` (
 --
 
 INSERT INTO `invoice` (`id`, `user_id`, `created_at`, `delivery_status`) VALUES
-(1, 2, '2019-12-02 05:38:08', 1),
-(2, 1, '2019-12-09 12:57:27', 0),
-(3, 6, '2019-12-28 21:42:02', 0),
-(4, 6, '2019-12-28 21:46:18', 0);
+(4, 6, '2019-12-28 21:46:18', 0),
+(5, 1, '2021-12-18 11:56:40', 0),
+(6, 1, '2021-12-18 12:18:41', 0);
 
 -- --------------------------------------------------------
 
@@ -201,7 +199,7 @@ CREATE TABLE `messages` (
   `email` varchar(70) NOT NULL,
   `subject` text NOT NULL,
   `message` text NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -222,7 +220,7 @@ CREATE TABLE `order_products` (
   `invoice_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `qty` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -230,16 +228,8 @@ CREATE TABLE `order_products` (
 --
 
 INSERT INTO `order_products` (`id`, `invoice_id`, `product_id`, `qty`, `created_at`) VALUES
-(1, 1, 12, 1, '2019-12-02 05:35:45'),
-(2, 1, 10, 1, '2019-12-02 05:35:45'),
-(3, 1, 6, 1, '2019-12-02 05:35:45'),
-(4, 2, 14, 2, '2019-12-09 12:57:27'),
-(5, 2, 12, 4, '2019-12-09 12:57:27'),
-(6, 2, 11, 2, '2019-12-09 12:57:27'),
-(7, 2, 10, 1, '2019-12-09 12:57:27'),
-(8, 2, 6, 1, '2019-12-09 12:57:27'),
-(9, 3, 10, 1, '2019-12-28 21:42:02'),
-(10, 4, 12, 1, '2019-12-28 21:46:18');
+(10, 4, 12, 1, '2019-12-28 21:46:18'),
+(11, 5, 19, 1, '2021-12-18 11:56:40');
 
 -- --------------------------------------------------------
 
@@ -254,7 +244,7 @@ CREATE TABLE `payment` (
   `trx_phone` varchar(16) NOT NULL,
   `trx_id` varchar(20) NOT NULL,
   `trx_amount` double NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -284,7 +274,9 @@ INSERT INTO `payment` (`id`, `invoice_id`, `trx_method`, `trx_phone`, `trx_id`, 
 (20, 1, 'Rocket', '01834040969', '187jNou54', 2258, '2019-12-02 05:35:45'),
 (21, 2, 'U-cash', '01834040969', '187jNou54', 6014, '2019-12-09 12:57:27'),
 (22, 3, 'B-kash', '', '', 0, '2019-12-28 21:42:02'),
-(23, 4, 'B-kash', '', '', 0, '2019-12-28 21:46:18');
+(23, 4, 'B-kash', '', '', 0, '2019-12-28 21:46:18'),
+(24, 5, 'B-kash', '', '', 0, '2021-12-18 11:56:40'),
+(25, 6, 'B-kash', '', '', 0, '2021-12-18 12:18:41');
 
 -- --------------------------------------------------------
 
@@ -303,8 +295,8 @@ CREATE TABLE `products` (
   `img1` text NOT NULL,
   `img2` text NOT NULL,
   `img3` text NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `status` int(11) NOT NULL DEFAULT '1',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `status` int(11) NOT NULL DEFAULT 1,
   `writer_name` text NOT NULL,
   `published_year` varchar(10) NOT NULL,
   `book_condition` varchar(255) NOT NULL
@@ -326,8 +318,12 @@ INSERT INTO `products` (`id`, `product_name`, `category_id`, `description`, `mar
 (17, 'Farewell Party ', 19, '', 50000, 0, 0, '5e07d29a4a6cc7.14370320.jpg', '', '', '2019-12-28 22:09:30', 1, '', '', ''),
 (18, 'Just For Kids ', 20, '', 5000, 0, 0, '5e07d2b1cdbab2.86182735.jpg', '', '', '2019-12-28 22:09:53', 1, '', '', ''),
 (19, 'Normal Package', 5, 'ffhh', 150, 100, 50, '', '', '', '2020-02-18 16:05:41', 1, 'Sujoy', '2020', 'con4'),
-(20, '', 0, '', 0, 0, 666, '', '', '', '2020-02-18 16:49:35', 1, '', '', ''),
-(21, 'Normal Package', 1, 'rter', 100, 222, 40, '5e4e3e748f7256.15722422.jpg', '', '', '2020-02-20 08:08:20', 1, 'Ashik', '222', 'con2');
+(21, 'Normal Package', 1, 'rter', 100, 222, 40, '5e4e3e748f7256.15722422.jpg', '', '', '2020-02-20 08:08:20', 1, 'Ashik', '222', 'con2'),
+(22, 'Multiverse of madness', 1, 'Thriller ', 2300, 230000, 12, '61bdc685547006.41171465.PNG', '', '', '2021-12-18 11:31:17', 1, 'Sujoy', '2021', 'con1'),
+(23, 'Multiverse of madness', 1, 'Thriller ', 2300, 230000, 12, '61bdc8917d2563.59762797.PNG', '', '', '2021-12-18 11:40:01', 1, 'Sujoy', '2021', 'con1'),
+(24, 'Multiverse of madness', 1, 'Thriller ', 2300, 230000, 12, '61bdca521b7508.94421945.PNG', '', '', '2021-12-18 11:47:30', 1, 'Sujoy', '2021', 'con1'),
+(25, 'Multiverse of madness', 1, 'Thriller ', 2300, 230000, 12, '61bdcab7859ca9.58263098.PNG', '', '', '2021-12-18 11:49:11', 1, 'Sujoy', '2021', 'con1'),
+(26, 'Multiverse of madness', 1, 'Thriller ', 2300, 230000, 12, '61bdcb0873b713.11159891.PNG', '', '', '2021-12-18 11:50:32', 1, 'Sujoy', '2021', 'con1');
 
 -- --------------------------------------------------------
 
@@ -339,7 +335,7 @@ CREATE TABLE `product_review` (
   `id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `review` text NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `name` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -403,7 +399,7 @@ CREATE TABLE `users` (
   `phone` varchar(20) NOT NULL,
   `password` varchar(70) NOT NULL,
   `role` varchar(25) NOT NULL DEFAULT 'user',
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `img` text NOT NULL,
   `address` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -557,7 +553,7 @@ ALTER TABLE `book_condition`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `contact_info`
@@ -569,13 +565,13 @@ ALTER TABLE `contact_info`
 -- AUTO_INCREMENT for table `delivery_info`
 --
 ALTER TABLE `delivery_info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `invoice`
 --
 ALTER TABLE `invoice`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `messages`
@@ -587,19 +583,19 @@ ALTER TABLE `messages`
 -- AUTO_INCREMENT for table `order_products`
 --
 ALTER TABLE `order_products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `product_review`
