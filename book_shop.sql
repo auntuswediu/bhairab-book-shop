@@ -267,7 +267,7 @@ CREATE TABLE `products` (
   `product_name` varchar(70) NOT NULL,
   `category_id` int(11) NOT NULL,
   `description` text NOT NULL,
-  `unit_price` double NOT NULL,
+  `market_price` double NOT NULL,
   `qty` int(11) NOT NULL,
   `img1` text NOT NULL,
   `img2` text NOT NULL,
@@ -280,7 +280,7 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `product_name`, `category_id`, `description`, `unit_price`, `qty`, `img1`, `img2`, `img3`, `created_at`, `status`) VALUES
+INSERT INTO `products` (`id`, `product_name`, `category_id`, `description`, `market_price`, `qty`, `img1`, `img2`, `img3`, `created_at`, `status`) VALUES
 (5, 'Joust Duffle Bag', 10, 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet.', 480, 4, '5dc089c959dac6.21021224.jpg', '', '', '2019-11-04 14:29:02', 1),
 (6, 'Chaz Kangeroo Hoodie3', 17, 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet.', 70, 10, '5dc08a9da05d07.74434876.jpg', '5dc08a9da0e527.93236823.jpg', '', '2019-11-04 14:31:25', 1),
 (7, 'Driven Backpack', 9, 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet.', 1000, 1, '5dc08f3d391935.16967786.jpg', '', '', '2019-11-04 14:51:09', 1),

@@ -72,7 +72,7 @@
 												<h4><a href="product-details?product_id=<?php echo $row['id']; ?>"><?php echo $row['product_name']; ?></a></h4>
 												<div class="product-price">
 													<ul>
-														<li>&#2547; <?php echo $row['unit_price']; ?></li>
+														<li>&#2547; <?php echo $row['market_price']; ?></li>
 														<!-- <li class="old-price">$33.00</li> -->
 													</ul>
 												</div>
@@ -98,7 +98,7 @@
 												<h4><a href="product-details?product_id=<?php echo $row['id']; ?>"><?php echo $row['product_name']; ?></a></h4>
 												<div class="product-price">
 													<ul>
-														<li>&#2547; <?php echo $row['unit_price']; ?></li>
+														<li>&#2547; <?php echo $row['market_price']; ?></li>
 														<!-- <li class="old-price">$33.00</li> -->
 													</ul>
 												</div>
@@ -186,7 +186,7 @@
 			                                    <h4><a href="product-details?product_id=<?php echo $row['id']; ?>"><?php echo $row['product_name']; ?></a></h4>
 			                                    <div class="product-price">
 			                                        <ul>
-			                                            <li>&#2547; <?php echo $row['unit_price']; ?></li>
+			                                            <li>&#2547; <?php echo $row['market_price']; ?></li>
 			                                        </ul>
 			                                    </div>
 			                                </div>
@@ -239,7 +239,7 @@
 													<h4><a href="product-details?product_id=<?php echo $row['id']; ?>"><?php echo $row['product_name']; ?></a></h4>
 													<div class="product-price">
 														<ul>
-															<li>&#2547; <?php echo $row['unit_price']; ?></li>
+															<li>&#2547; <?php echo $row['market_price']; ?></li>
 															<!-- <li class="old-price">$38.00</li> -->
 														</ul>
 													</div>

@@ -49,14 +49,14 @@ if(isset($_SESSION['product'])){
 		$t = 0;
 		foreach ($_SESSION['product'] as $product){
 				$row_cart_product = mysqli_fetch_array(mysqli_query($con,"SELECT * from products where id = '".$product['id']."' "));
-				$t = $t+($product['qty']*$row_cart_product['unit_price']);
+				$t = $t+($product['qty']*$row_cart_product['market_price']);
 				echo '<div class="single-cart">
 				<div class="cart-img">
 					<a href="product-details?product_id='.$product['id'].'"><img src="public/images/products/'.$row_cart_product['img1'].'" alt="book" /></a>
 				</div>
 				<div class="cart-info">
 					<h5><a href="product-details?product_id='.$product['id'].'">'.$row_cart_product['product_name'].'</a></h5>
-					<p>'.$product['qty'].' x &#2547; '.$row_cart_product['unit_price'].'</p>
+					<p>'.$product['qty'].' x &#2547; '.$row_cart_product['market_price'].'</p>
 				</div>
 				<div class="cart-icon">
 				    <a class="remove_shoppiing_cart" id="remove_'.$product['id'].'"><i class="fa fa-remove"></i></a>

@@ -1,3 +1,3 @@
 <?php 
-	$con = mysqli_connect('localhost','root','','e-commerce');
+	$con = mysqli_connect('localhost','root','','book_shop');
  ?>

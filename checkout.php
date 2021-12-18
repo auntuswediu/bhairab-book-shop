@@ -217,14 +217,14 @@
 											$t = 0;
 											foreach ($_SESSION['product'] as $product):
 											$row_cart_product = mysqli_fetch_array(mysqli_query($con,"SELECT * from products where id = '".$product['id']."' "));
-											$t = $t+($product['qty']*$row_cart_product['unit_price']); 
+											$t = $t+($product['qty']*$row_cart_product['market_price']); 
 										?>
 											<tr class="cart_item">
 												<td class="product-name">
 													<?php echo $row_cart_product['product_name']; ?> <strong class="product-quantity"> × <?php echo $product['qty']; ?></strong>
 												</td>
 												<td class="product-total">
-													<span class="amount">&#2547; <?php echo $row_cart_product['unit_price']; ?></span>
+													<span class="amount">&#2547; <?php echo $row_cart_product['market_price']; ?></span>
 												</td>
 											</tr>
 										<?php endforeach ?>

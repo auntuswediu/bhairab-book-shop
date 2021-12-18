@@ -42,7 +42,7 @@ if (isset($_GET['p_id'])) {
 		                        <div class="modal-pro-content">
 		                            <h3>'.$row['product_name'].'</h3>
 		                            <div class="price">
-		                                <span>BDT '.$row['unit_price'].'</span>
+		                                <span>BDT '.$row['market_price'].'</span>
 		                            </div>
 		                            <p>'.$row['description'].'</p>    
 		                            <div class="quick-view-select">
